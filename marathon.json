@@ -10,7 +10,7 @@
         {
           "containerPort": 80,
           "protocol": "tcp",
-          "name": "http"
+          "name": "http",
           "serviceport": 0
         }
       ],
