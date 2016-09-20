@@ -12,7 +12,7 @@ node {
 
     // Build Docker image
     stage 'Build'
-    sh "docker build -t mesosphere/vny:${gitCommit()} ."
+    sh "docker build -t lobsters/dcos_tutorial:${gitCommit()} ."
 
     // Log in and push image to GitLab
     stage 'Publish'
@@ -25,6 +25,6 @@ node {
         ]]
     ) {
         sh "docker login -u lobsters -p velocitypassword -e richard.mcleod@gmail.com"
-        sh "docker push mesosphere/vny:${gitCommit()}"
+        sh "docker push lobsters/dcos_tutorial:${gitCommit()}"
     }
 }
