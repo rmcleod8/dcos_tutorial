@@ -19,12 +19,12 @@ node {
     withCredentials(
         [[
             $class: 'UsernamePasswordMultiBinding',
-            credentialsId: 'dockerhub-mesosphere',
+            credentialsId: 'dockerhub-lobsters',
             passwordVariable: 'DOCKERHUB_PASSWORD',
             usernameVariable: 'DOCKERHUB_USERNAME'
         ]]
     ) {
-        sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD} -e demo@mesosphere.com"
+        sh "docker login -u lobsters -p velocitypassword -e richard.mcleod@gmail.com"
         sh "docker push mesosphere/vny:${gitCommit()}"
     }
 }
