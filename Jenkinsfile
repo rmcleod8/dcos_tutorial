@@ -27,4 +27,15 @@ node {
         sh "docker login -u lobsters -p velocitypassword -e richard.mcleod@gmail.com"
         sh "docker push lobsters/dcos_tutorial:${gitCommit()}"
     }
+// Deploy
+    stage 'Deploy'
+
+    marathon(
+        url: 'http://marathon.mesos:8080',
+        forceUpdate: false,
+        credentialsId: 'dcos-token',
+        filename: 'marathon.json',
+        appId: 'nginx-mesosphere-lobsters',
+        docker: "lobsters/dcos_tutorial:${gitCommit()}".toString()
+    )
 }
